@@ -29,7 +29,16 @@ export class MoviesService {
   {
     return this._HttpClient.get(`https://api.themoviedb.org/3/${media_type}/popular?api_key=038a4c34fec18a29cd459248690420fc&language=en-US&page=${numOfPage}`)
   }
-
+  getMoviesForPearson(id:string):Observable<any>
+  {
+    return this._HttpClient.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=038a4c34fec18a29cd459248690420fc&language=en-US`)
+  }
+  getItemCrew(media_type:string, id:string):Observable<any>
+  {
+    return this._HttpClient.get(`https://api.themoviedb.org/3/${media_type}/${id}/credits?api_key=038a4c34fec18a29cd459248690420fc&language=en-US`)
+  }
+  //https://api.themoviedb.org/3/${movie}/${movie_id}/credits?api_key=038a4c34fec18a29cd459248690420fc&language=en-US
+  //https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=038a4c34fec18a29cd459248690420fc&language=en-US
   //https://api.themoviedb.org/3/${media_type}/${id}/lists?api_key=038a4c34fec18a29cd459248690420fc&language=en-US&page=${numOfPage}
   //https://api.themoviedb.org/3/${media_type}/popular?api_key=038a4c34fec18a29cd459248690420fc&language=en-US&page=${numOfPage}
 

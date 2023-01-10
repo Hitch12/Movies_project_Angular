@@ -25,9 +25,6 @@ a,a:hover{
   overflow: hidden;
   cursor: pointer;
 }
-img{
-  min-height: 435px;
-}
 .card:hover{
   transform: scale(0.98);
 }

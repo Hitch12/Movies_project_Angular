@@ -9,18 +9,23 @@
           <h1>{{ itemDetails.name }}</h1>
           <h3>{{ itemDetails.place_of_birth }}</h3>
           <div class="my-3 h4 fw-bold">
-            <span class="pe-4">{{itemDetails.birthday}}</span>
-            <span>{{itemDetails.known_for_department}}</span>
           </div>
-          <!-- <p class="fs-4">{{itemDetails.production_countries[0].name}}</p> -->
           <p class="my-3 fs-5 text-white-50">{{ itemDetails.biography }}</p>
-          <!-- <div class="my-4">
-            <span class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{itemDetails.genres[0].name}}</span>
-            <span class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{itemDetails.genres[1].name}}</span>
-            <span class="alert-info alert px-3 py-2 fs-5 rounded-0">{{itemDetails.genres[2].name}}</span>
-          </div>
-          <a [href]="itemDetails.homepage" target="_blank" class="btn btn-outline-light px-4 py-3 fs-5 my-2 rounded-0">Sores Page</a> -->
 
+          <div class="row my-3">
+            <div class="col-4 col-md-3" *ngFor="let item of itemMovies">
+              <a [routerLink]="['/media-detils', item.id, 'movie']">
+                <div class="card bg-dark text-center position-relative">
+                  <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h5>
+                    <h5 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join( ' ')}}</h5>
+                    <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
 
         </div>
       </div>
