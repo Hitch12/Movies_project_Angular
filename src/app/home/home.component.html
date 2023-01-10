@@ -1,0 +1,80 @@
+<div class="container-fluid">
+
+  <div class="row g-4 my-5">
+    <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
+      <div class="">
+        <div class="text-center">
+          <hr>
+          <h3>Trending Movies <br>
+          To watch Right now</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas in soluta inventore eveniet nisi, officiis facere dolores porro!</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-6 col-md-4" *ngFor="let item of trendingMovie.slice(0,10)">
+      <a [routerLink]="['/media-detils', item.id, item.media_type]">
+      <div class="card bg-dark text-center position-relative">
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5>{{item.title.split(' ').slice(0,2).join()}}</h5>
+          <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+          <!-- <p class="card-text">{{item.overview.split(' ').slice(0,4).join()}}</p> -->
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4 my-5">
+    <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
+      <div class="">
+        <div class="text-center">
+          <hr>
+          <h3>Trending TV <br>
+          To watch Right now</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas in soluta inventore eveniet nisi, officiis facere dolores porro!</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-6 col-md-4" *ngFor="let item of trendingTV.slice(0,10)">
+      <a [routerLink]="['/media-detils', item.id, item.media_type]">
+      <div class="card bg-dark text-center position-relative">
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5>{{item.name.split(' ').slice(0,2).join()}}</h5>
+          <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+          <!-- <p class="card-text">{{item.overview.split(' ').slice(0,4).join()}}</p> -->
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row g-4 my-5">
+    <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
+      <div class="">
+        <div class="text-center">
+          <hr>
+          <h3>Trending People <br>
+          To watch Right now</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas in soluta inventore eveniet nisi, officiis facere dolores porro!</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-6 col-md-4" *ngFor="let item of trendingPeople.slice(0,10)">
+      <a [routerLink]="['/media-detils', item.id, 'person']">
+      <div class="card bg-dark text-center position-relative">
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+item.profile_path" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5>{{item.name.split(' ').slice(0,2).join()}}</h5>
+          <!-- <p class="card-text">{{item.overview.split(' ').slice(0,4).join()}}</p> -->
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+
+</div>

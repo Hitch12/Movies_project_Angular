@@ -1,0 +1,29 @@
+<div class="page ">
+  <div class="bg shadow-lg">
+    <div class="py-4 layar">
+      <div class="row container-fluid justify-content-center d-flex">
+        <div class="col-md-3">
+          <img class="w-100 shadow-lg rounded-2"[src]="'https://image.tmdb.org/t/p/w500/' + itemDetails.profile_path"/>
+        </div>
+        <div class="col-md-7 my-4">
+          <h1>{{ itemDetails.name }}</h1>
+          <h3>{{ itemDetails.place_of_birth }}</h3>
+          <div class="my-3 h4 fw-bold">
+            <span class="pe-4">{{itemDetails.birthday}}</span>
+            <span>{{itemDetails.known_for_department}}</span>
+          </div>
+          <!-- <p class="fs-4">{{itemDetails.production_countries[0].name}}</p> -->
+          <p class="my-3 fs-5 text-white-50">{{ itemDetails.biography }}</p>
+          <!-- <div class="my-4">
+            <span class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{itemDetails.genres[0].name}}</span>
+            <span class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{itemDetails.genres[1].name}}</span>
+            <span class="alert-info alert px-3 py-2 fs-5 rounded-0">{{itemDetails.genres[2].name}}</span>
+          </div>
+          <a [href]="itemDetails.homepage" target="_blank" class="btn btn-outline-light px-4 py-3 fs-5 my-2 rounded-0">Sores Page</a> -->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

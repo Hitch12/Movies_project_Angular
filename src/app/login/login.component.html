@@ -1,0 +1,38 @@
+
+
+<div class="container mx-auto py-5">
+
+  <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm(loginForm)" class="w-75 mx-auto">
+
+    <h2 class="text-center mb-3 fw-bold">sign In</h2>
+
+    <label for="email">Email :</label>
+    <input formControlName="email" type="email" class="form-control" name="email" id='email'>
+    <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger" role="alert">
+      <p class="m-0" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
+      <p class="m-0" *ngIf="loginForm.get('email')?.getError('email')">Email</p>
+    </div>
+
+    <label for="password">Password :</label>
+    <input formControlName="password" type="password" class="form-control" name="password" id='password'>
+    <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger" role="alert">
+      <p class="m-0" *ngIf="loginForm.get('password')?.getError('required')">Password is required</p>
+      <p class="m-0" *ngIf="loginForm.get('password')?.getError('maxLength')">Password maxLength 8</p>
+      <p class="m-0" *ngIf="loginForm.get('password')?.getError('minLength')">Password is minLength 3</p>
+    </div>
+
+    <div class="alert py-2 fs-5 text-center" [ngClass]="{'alert-success':message=='success','alert-danger':message!='success'}" *ngIf="message" role="alert">
+      {{message}}
+    </div>
+
+    <button [disabled]="loginForm.invalid" class="btn btn-primary px-4 mt-1">
+      <span *ngIf="!isLoading">Login</span>
+      <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+    </button>
+
+  </form>
+
+</div>
+
+
+

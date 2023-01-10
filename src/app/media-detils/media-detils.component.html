@@ -1,0 +1,40 @@
+<div class="page ">
+  <div class="bg shadow-lg" [style.background-image]="itemDetails.backdrop_path != null? 'url(https://image.tmdb.org/t/p/w500/' + itemDetails.backdrop_path + ')': ''">
+    <div class="py-4 layar">
+      <div class="row container-fluid justify-content-center d-flex">
+        <div class="col-md-3">
+          <img class="w-100 shadow-lg rounded-2"[src]="'https://image.tmdb.org/t/p/w500/'+itemDetails.poster_path"/>
+        </div>
+        <div class="col-md-7 my-4">
+          <h1>{{ itemDetails.title }} {{ itemDetails.name }}</h1>
+          <h3>{{ itemDetails.tagline }}</h3>
+          <div class="my-3 h4 fw-bold">
+            <span class="pe-4">{{itemDetails.vote_average.toFixed(1)}} / 10 <i class="fa-star fa-solid text-warning"></i></span>
+            <span>{{itemDetails.vote_count}} <i class="fa-people-group fa-solid text-success"></i></span>
+            <span class="ms-5">{{itemDetails.release_date}}</span>
+          </div>
+          <p *ngFor="let item of itemDetails.production_countries" class="fs-4">{{item.name}}</p>
+          <p class="my-3 fs-5 text-white-50">{{ itemDetails.overview }}</p>
+          <div class="my-4" >
+            <span *ngFor="let item of itemDetails.genres" class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{item.name}}</span>
+          </div>
+          <a [href]="itemDetails.homepage" target="_blank" class="btn btn-outline-light px-4 py-3 fs-5 my-2 rounded-0">Sores Page</a>
+
+          <div class="row my-3">
+            <div class="col-4 col-md-3" *ngFor="let item of itemSimilar">
+              <div (click)="getSimilar(item.id,mediaType)" class="card bg-dark text-center position-relative">
+                  <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join()}}</h5>
+                    <h5 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join()}}</h5>
+                    <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

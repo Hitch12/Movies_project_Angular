@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root{
+  --bg-main:#131722;
+  --bg-main2:#24baef;
+  --main-font:'Montserrat Alternates', sans-serif;
+}
+.bg-main{
+  background: var(--bg-main);
+}
+.bg-main2{
+  background: var(--bg-main2);
+}
+body{
+  background: var(--bg-main);
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #fff;
+}
+a,a:hover{
+  text-decoration: none;
+  color: #fff;
+
+}
+.card{
+  transition: all 0.5s !important;
+  overflow: hidden;
+  cursor: pointer;
+}
+img{
+  min-height: 435px;
+}
+.card:hover{
+  transform: scale(0.98);
+}
+
+.form-control{
+  margin-bottom: 10px !important;
+}
+
