@@ -36,9 +36,7 @@
         <li class="nav-item">
           <a *ngIf="!isLoading" class="nav-link" aria-current="page" routerLink="register">Register</a>
         </li>
-        <li class="nav-item pointer-event">
-          <a *ngIf="isLoading" (click)="logOut()" class="nav-link" aria-current="page">Logout</a>
-        </li>
+          <a class="pointer nav-link" *ngIf="isLoading" (click)="logOut()">Logout</a>
       </ul>
     </div>
 

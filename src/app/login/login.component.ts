@@ -6,7 +6,8 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+
 })
 export class LoginComponent implements OnInit {
 
@@ -18,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   //Angular Form
   loginForm:FormGroup = new FormGroup({
-    email:new FormControl(null, [Validators.email, Validators.required]),
-    password:new FormControl(null , [Validators.minLength(6), Validators.maxLength(14), Validators.required]),
+    email:new FormControl('a34s5@gmail.com', [Validators.email, Validators.required]),
+    password:new FormControl('123456' , [Validators.minLength(6), Validators.maxLength(14), Validators.required]),
   })
 
   submitLoginForm(loginForm:FormGroup){

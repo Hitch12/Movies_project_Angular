@@ -14,10 +14,14 @@ import { PeopleComponent } from './people/people.component';
 import { NotfondComponent } from './notfond/notfond.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { GamesComponent } from './games/games.component';
 import { MediaDetilsComponent } from './media-detils/media-detils.component';
 import { SolveImagePipe } from './solve-image.pipe';
-import { PeopledeteilsComponent } from './peopledeteils/peopledeteils.component'
+import { PeopledeteilsComponent } from './peopledeteils/peopledeteils.component';
+import { LoadingComponent } from './loading/loading.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginatorModule } from 'primeng/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,17 +34,19 @@ import { PeopledeteilsComponent } from './peopledeteils/peopledeteils.component'
     TvComponent,
     PeopleComponent,
     NotfondComponent,
-    GamesComponent,
     MediaDetilsComponent,
     SolveImagePipe,
-    PeopledeteilsComponent
-
+    PeopledeteilsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
-<div class="page ">
-  <div class="bg shadow-lg" [style.background-image]="itemDetails.backdrop_path != null? 'url(https://image.tmdb.org/t/p/w500/' + itemDetails.backdrop_path + ')': ''">
+
+  <div *ngIf="!isLoading" class="bg shadow-lg" [style.background-image]="itemDetails.backdrop_path != null? 'url(https://image.tmdb.org/t/p/w500/' + itemDetails.backdrop_path + ')': ''">
     <div class="py-4 layar">
       <div class="row container-fluid justify-content-center d-flex">
         <div class="col-md-3">
@@ -7,38 +7,45 @@
         </div>
         <div class="col-md-7 my-4">
           <h1>{{ itemDetails.title }} {{ itemDetails.name }}</h1>
-          <h3>{{ itemDetails.tagline }}</h3>
-          <div class="my-3 h4 fw-bold">
-            <span class="pe-4">{{itemDetails.vote_average.toFixed(1)}} / 10 <i class="fa-star fa-solid text-warning"></i></span>
-            <span>{{itemDetails.vote_count}} <i class="fa-people-group fa-solid text-success"></i></span>
-            <span class="ms-5">{{itemDetails.release_date}}</span>
+          <h3 class="tagline">{{ itemDetails.tagline }}</h3>
+          <div class="my-3 h4 fw-bold d-flex flex-wrap">
+            <span *ngIf="itemDetails.vote_average" class="pe-4 py-2">{{itemDetails.vote_average.toFixed(1)}} / 10 <i class="fa-star fa-solid text-warning"></i></span>
+            <span *ngIf="itemDetails.vote_count" class="pe-4 py-2">{{itemDetails.vote_count}} <i class="fa-people-group fa-solid text-success"></i></span>
+            <span *ngIf="itemDetails.release_date" class="py-2 ">{{itemDetails.release_date}} <i class="fa-solid fa-calendar-check text-main2"></i></span>
           </div>
           <span *ngFor="let item of itemDetails.production_countries" class="fs-4 me-3">{{item.name}}</span>
-          <p class="my-3 fs-5 text-white-50">{{ itemDetails.overview }}</p>
-          <div class="my-4" >
-            <span *ngFor="let item of itemDetails.genres" class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0">{{item.name}}</span>
+          <p class="my-3 text-white-50 overview">{{ itemDetails.overview }}</p>
+          <div class="my-4 d-flex flex-wrap" >
+            <div *ngFor="let item of itemDetails.genres" class="alert-info alert px-3 py-2 fs-5 me-2 rounded-0 mb-2">{{item.name}}</div>
           </div>
           <a [href]="itemDetails.homepage" target="_blank" class="btn btn-outline-light px-4 py-3 fs-5 my-2 rounded-0">Sores Page</a>
 
-          <div class="row my-3">
-            <div class="col-4 col-md-3" *ngFor="let item of itemSimilar">
-              <div (click)="getSimilar(item.id,mediaType)" class="card bg-dark text-center position-relative">
-                  <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h5>
-                    <h5 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join(' ')}}</h5>
-                    <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+          <div class="my-3">
+            <h3 *ngIf="itemSimilar" class="mt-4">Similar</h3>
+            <owl-carousel-o [options]="customOptions">
+              <ng-container  *ngFor="let slide of itemSimilar">
+                <ng-template carouselSlide [id]="slide.id">
+                  <div (click)="getSimilar(slide.id,mediaType)" class="card bg-dark text-center position-relative">
+                    <img [src]="'https://image.tmdb.org/t/p/w500/'+slide.poster_path" class="card-img-top similar-img" alt="...">
+                    <div class="card-body px-0">
+                      <h6 *ngIf="slide.title">{{slide.title.split(' ').slice(0,2).join(' ')}}</h6>
+                      <h6 *ngIf="slide.name">{{slide.name.split(' ').slice(0,2).join(' ')}}</h6>
+                      <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{slide.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+                    </div>
                   </div>
-                </div>
-            </div>
+                </ng-template>
+              </ng-container>
+
+            </owl-carousel-o>
           </div>
-          <div class="row my-3">
-            <div class="col-2 col-md-2" *ngFor="let item of mediaCrew">
+          <div class="row my-3 g-0">
+            <h3 *ngIf="mediaCrew">Cast</h3>
+            <div class="col-4 col-md-2" *ngFor="let item of mediaCrew">
               <a [routerLink]="['/peopledeteils', item.id, 'person']">
                 <div class="card bg-dark text-center position-relative">
                   <img [src]="'https://image.tmdb.org/t/p/w500/'+item.profile_path" class="card-img-top" alt="...">
-                  <div class="card-body p-0 py-3">
-                    <h5 *ngIf="item.name" class="fs-6">{{item.name}}</h5>
+                  <div class="card-body p-0 py-2">
+                    <h5 *ngIf="item.name" class="fs-8 castName">{{item.name}}</h5>
                   </div>
                 </div>
               </a>
@@ -49,3 +56,5 @@
     </div>
   </div>
 </div>
+<app-loading *ngIf="isLoading"></app-loading>
+

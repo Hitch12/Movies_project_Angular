@@ -1,14 +1,9 @@
-<div class="container-fluid">
+<div *ngIf="!isLoading" class="container-fluid">
   <div class="d-flex justify-content-center align-items-center my-5">
-    <h2 class="">Top Rated Movies</h2>
+    <h2 class="mb-1">Top Rated Movies</h2>
   </div>
-  <div class="my-5">
-    <ul class="list-unstyled d-flex justify-content-center align-items-center ">
-      <li (click)="getPage(1)" class="btn btn-outline-light p-4 py-3 rounded-pill mx-3 fs-4">Page 1</li>
-      <li (click)="getPage(2)" class="btn btn-outline-light p-4 py-3 rounded-pill mx-3 fs-4">Page 2</li>
-      <li (click)="getPage(3)" class="btn btn-outline-light p-4 py-3 rounded-pill mx-3 fs-4">Page 3</li>
-
-    </ul>
+  <div class="mb-3">
+    <p-paginator (onPageChange)="onPageChange($event)" styleClass=" bg-transparent p-0" [first]="first" [rows]="rows" [totalRecords]="totalPages" [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
   </div>
 
   <div class="row g-4 mb-5">
@@ -17,8 +12,8 @@
       <a [routerLink]="['/media-detils', item.id, 'movie']">
       <div class="card bg-dark text-center position-relative">
         <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5>{{item.title.split(' ').slice(0,2).join()}}</h5>
+        <div class="card-body px-0">
+          <h5>{{item.title.split(' ').slice(0,2).join(' ')}}</h5>
           <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
         </div>
       </div>
@@ -26,4 +21,6 @@
     </div>
 
   </div>
+
 </div>
+<app-loading *ngIf="isLoading"></app-loading>

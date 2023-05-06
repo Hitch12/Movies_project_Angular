@@ -1,4 +1,4 @@
-<div class="page ">
+<div *ngIf="!isLoading" class="page ">
   <div class="bg shadow-lg">
     <div class="py-4 layar">
       <div class="row container-fluid justify-content-center d-flex">
@@ -13,10 +13,10 @@
           <p class="my-3 fs-5 text-white-50">{{ itemDetails.biography }}</p>
 
           <div class="row my-3">
-            <div class="col-4 col-md-3" *ngFor="let item of itemMovies">
+            <!-- <div class="col-4 col-md-3" *ngFor="let item of itemMovies">
               <a [routerLink]="['/media-detils', item.id, 'movie']">
                 <div class="card bg-dark text-center position-relative">
-                  <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="card-img-top" alt="...">
+                  <img [src]="'https://image.tmdb.org/t/p/w500/' + item.poster_path" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h5>
                     <h5 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join( ' ')}}</h5>
@@ -24,7 +24,25 @@
                   </div>
                 </div>
               </a>
-            </div>
+            </div> -->
+            <owl-carousel-o [options]="customOptions">
+
+              <ng-container  *ngFor="let item of itemMovies">
+                <ng-template carouselSlide [id]="item.id">
+                  <a [routerLink]="['/media-detils', item.id, 'movie']">
+                    <div class="card bg-dark text-center position-relative">
+                      <img [src]="'https://image.tmdb.org/t/p/w500/' + item.poster_path" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h6 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h6>
+                        <h6 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join(' ')}}</h6>
+                        <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
+                      </div>
+                    </div>
+                  </a>
+                </ng-template>
+              </ng-container>
+
+            </owl-carousel-o>
           </div>
 
         </div>
@@ -32,3 +50,4 @@
     </div>
   </div>
 </div>
+<app-loading *ngIf="isLoading"></app-loading>

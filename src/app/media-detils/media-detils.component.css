@@ -1,18 +1,73 @@
 .bg{
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position: top center;
+
 
 }
 .layar{
 
-height: 55vh;
-background: rgba(0, 0, 0, 0.814);
+  height: 55vh;
+  background: rgba(0, 0, 0, 0.85);
 
 }
+
+
 .page{
   height: 90vh;
   width: 100%;
   background: var(--bg-main);
   overflow-x: hidden;
+}
+.fs-7{
+  font-size: 12px;
+
+}
+.fs-8{
+  font-size: 12px;
+}
+
+.similar-img{
+  height: 250px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h6{
+    font-size: 14px;
+  }
+  .castName{
+    font-size: 6px;
+  }
+  .overview{
+    font-size: 16px;
+  }
+  h1{
+    font-size: 22px;
+  }
+  .tagline{
+    font-size: 18px;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }

@@ -1,6 +1,41 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="trendingMovie.length">
 
-  <div class="row g-4 my-5">
+  <!-- Main slider -->
+  <div class="MainSlider mb-4">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container  *ngFor="let item of trendingMovie">
+        <ng-template carouselSlide [id]="item.id">
+          <a [routerLink]="['/media-detils', item.id, item.media_type]">
+            <div class="position-relative">
+              <img [src]="'https://image.tmdb.org/t/p/w500/'+item.backdrop_path" class="img-slide" alt="...">
+              <div class="layer row g-0">
+                <div class="p-4 ps-5 d-none d-md-block col-3">
+                  <img [src]="'https://image.tmdb.org/t/p/w500/'+item.poster_path" class="rounded-2 shadow-lg" alt="...">
+                </div>
+                <div class="col-md-9 d-flex align-items-center">
+                  <div class="ps-3">
+                    <h2 class="m-0 mb-md-3">{{ item.title }}</h2>
+                    <div class="fs-5 fw-bold">
+                      <span class="pe-4 text-slide">{{item.vote_average.toFixed(1)}} / 10 <i class="fa-star fa-solid text-warning"></i></span>
+                      <span class="text-slide">{{item.vote_count}} <i class="fa-people-group fa-solid text-success"></i></span>
+                      <span class="ms-4 my-2 text-slide">{{item.release_date}}</span>
+                    </div>
+                    <p class="my-3 fs-5 text-white-50 d-none d-md-block">{{ item.overview }}</p>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            </a>
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+  </div>
+
+  <!-- Trending Movies -->
+  <div class="row g-4 mb-5">
     <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
       <div class="">
         <div class="text-center">
@@ -26,6 +61,7 @@
     </div>
   </div>
 
+  <!-- Trending TV -->
   <div class="row g-4 my-5">
     <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
       <div class="">
@@ -52,6 +88,7 @@
     </div>
   </div>
 
+  <!-- Trending People -->
   <div class="row g-4 my-5">
     <div class="col-md-4 col-6 d-flex align-items-center justify-content-center">
       <div class="">
@@ -65,7 +102,7 @@
       </div>
     </div>
     <div class="col-lg-2 col-6 col-md-4" *ngFor="let item of trendingPeople.slice(0,10)">
-      <a [routerLink]="['/media-detils', item.id, 'person']">
+      <a [routerLink]="['/peopledeteils', item.id, 'person']">
       <div class="card bg-dark text-center position-relative">
         <img [src]="'https://image.tmdb.org/t/p/w500/'+item.profile_path" class="card-img-top" alt="...">
         <div class="card-body">
@@ -78,3 +115,5 @@
   </div>
 
 </div>
+<app-loading *ngIf="!trendingMovie.length"></app-loading>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
     this._MoviesService.getTrending('movie').subscribe({
       next:(result)=>{
         this.trendingMovie=result.results
-        //console.log(this.trendingMovie)
+        console.log(this.trendingMovie)
       }
     })
     this._MoviesService.getTrending('tv').subscribe({
@@ -33,6 +34,32 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: false,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    nav: true,
+    navText:['<i class="fa-solid fa-arrow-left text-black"></i>','<i class="fa-solid fa-arrow-right text-black"></i>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 1
+      },
+      740: {
+        items: 1
+      },
+      940: {
+        items: 1
+      }
+    },
+    autoplay:true,
+    lazyLoad:true
 
+  }
 }
 
