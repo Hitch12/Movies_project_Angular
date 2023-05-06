@@ -66,7 +66,7 @@ export class MediaDetilsComponent implements OnInit {
         items: 2
       },
       400: {
-        items: 2
+        items: 4
       },
       740: {
         items: 4
