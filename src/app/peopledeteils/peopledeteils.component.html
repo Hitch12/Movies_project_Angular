@@ -33,8 +33,8 @@
                     <div class="card bg-dark text-center position-relative">
                       <img [src]="'https://image.tmdb.org/t/p/w500/' + item.poster_path" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h6 *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h6>
-                        <h6 *ngIf="item.name">{{item.name.split(' ').slice(0,2).join(' ')}}</h6>
+                        <h6 class="m-0" *ngIf="item.title">{{item.title.split(' ').slice(0,2).join(' ')}}</h6>
+                        <h6 class="m-0" *ngIf="item.name">{{item.name.split(' ').slice(0,2).join(' ')}}</h6>
                         <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{item.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
                       </div>
                     </div>

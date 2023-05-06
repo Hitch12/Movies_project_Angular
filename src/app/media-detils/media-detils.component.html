@@ -28,8 +28,8 @@
                   <div (click)="getSimilar(slide.id,mediaType)" class="card bg-dark text-center position-relative">
                     <img [src]="'https://image.tmdb.org/t/p/w500/'+slide.poster_path" class="card-img-top similar-img" alt="...">
                     <div class="card-body px-0">
-                      <h6 *ngIf="slide.title">{{slide.title.split(' ').slice(0,2).join(' ')}}</h6>
-                      <h6 *ngIf="slide.name">{{slide.name.split(' ').slice(0,2).join(' ')}}</h6>
+                      <h6 class="m-0" *ngIf="slide.title">{{slide.title.split(' ').slice(0,2).join(' ')}}</h6>
+                      <h6 class="m-0" *ngIf="slide.name">{{slide.name.split(' ').slice(0,2).join(' ')}}</h6>
                       <div class="vote bg-dark position-absolute top-0 end-0 text-white fs-5 px-3 py-2">{{slide.vote_average.toFixed(1)}} <i class="fa-solid fa-star text-warning"></i></div>
                     </div>
                   </div>
