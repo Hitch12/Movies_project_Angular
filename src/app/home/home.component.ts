@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     this._MoviesService.getTrending('movie').subscribe({
       next:(result)=>{
         this.trendingMovie=result.results
-        console.log(this.trendingMovie)
+        // console.log(this.trendingMovie)
       }
     })
     this._MoviesService.getTrending('tv').subscribe({
