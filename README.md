@@ -1,2 +1,2 @@
 Demo :)
-https://movies-project-angular-beta.vercel.app/#/login
+https://movies-project-angular-beta.vercel.app/#/
